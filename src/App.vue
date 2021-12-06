@@ -8,7 +8,7 @@
           <div class="flex-fill">
             <select id="city" class="form-control">
               <!-- 製作下拉選單 -->
-              <option v-bind:value="city.name" v-bind:key="city.name" v-for="city in cityName" >
+              <option v-bind:value="city.name" v-bind:key="city.name" v-for="city in cityName">
                 {{ city.name }}
               </option>
             </select>
@@ -19,8 +19,9 @@
           <div class="flex-fill">
             <select id="dist" class="form-control">
               <!-- 製作下拉選單 -->
-              <option :value="" :key="" v-for="dist in cityName.find((city) => city.name === select.city).districts">
-                {{  }}
+              <option :value="dist.name" :key="dist.name" 
+                v-for="dist in cityName.find((city) => city.name === select.city).districts">
+                {{ dist.name }}
               </option>
             </select>
           </div>
@@ -44,7 +45,7 @@ export default {
     cityName,
     select: {
       city: '臺北市',
-    }
+    },
   }),
 };
 </script>
