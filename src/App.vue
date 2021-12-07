@@ -6,7 +6,7 @@
         <div class="form-group d-flex">
           <label for="city" class="col-form-label mr-2 text-right">縣市</label>
           <div class="flex-fill">
-            <select id="city" class="form-control">
+            <select id="city" class="form-control" v-model="select.city">
               <!-- 製作下拉選單 -->
               <option v-bind:value="city.name" v-bind:key="city.name" v-for="city in cityName">
                 {{ city.name }}
@@ -17,7 +17,7 @@
         <div class="form-group d-flex">
           <label for="dist" class="col-form-label mr-2 text-right">地區</label>
           <div class="flex-fill">
-            <select id="dist" class="form-control">
+            <select id="dist" class="form-control" v-model="select.dist">
               <!-- 製作下拉選單 -->
               <option :value="dist.name" :key="dist.name" 
                 v-for="dist in cityName.find((city) => city.name === select.city).districts">
@@ -45,6 +45,7 @@ export default {
     cityName,
     select: {
       city: '臺北市',
+      dist: '中正區',
     },
   }),
 };
