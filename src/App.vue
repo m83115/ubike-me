@@ -48,6 +48,12 @@ export default {
       dist: '中正區',
     },
   }),
+  created() {
+    const api ='https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json';
+    this.$http.get(api).then((response) => {
+      console.log(response.data);
+})
+  }
 };
 </script>
 
