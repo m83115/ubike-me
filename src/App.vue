@@ -50,9 +50,9 @@ export default {
     ubikes: [],
   }),
   created() {
-    const api ='https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json';
-    this.$http.get(api).then((response) => {
-      console.log(response.data);
+    const url ='https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json';
+    this.$http.get(url).then((response) => {
+      // console.log(response.data);
       this.ubikes = Object.keys(response.data.retVal).map((key) => response.data.retVal[key]);
     });
   },
