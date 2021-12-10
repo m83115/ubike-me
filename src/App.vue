@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import L from 'leaflet';
 import cityName from './assets/cityName.json';
 
 export default {
@@ -48,6 +49,7 @@ export default {
       dist: '中正區',
     },
     ubikes: [],
+    OSMap: {},
   }),
   created() {
     const url ='https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json';
@@ -55,6 +57,16 @@ export default {
       // console.log(response.data);
       this.ubikes = Object.keys(response.data.retVal).map((key) => response.data.retVal[key]);
     });
+  },
+  mounted() {
+    this.OSMap = L.map('map', {
+      center: [25.041956, 121.508791],
+      zoom: 18,
+    });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+    }).addTo(this.OSMap);
   },
 };
 </script>
