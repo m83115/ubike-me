@@ -51,6 +51,25 @@ export default {
     ubikes: [],
     OSMap: {},
   }),
+  computed: {
+    youbikes () {
+      this.ubikes.filter((bike) => {
+        bike.sarea === this.select.dist
+      });
+    }
+  },
+  watch: {
+    youbikes() {
+      this.addMarkers();
+    }
+  },
+  methods: {
+    addMarkers() {
+      this.youbikes.forEach((bike) => {
+        L.marker([50.5, 30.5]).addTo(map);
+      });
+    },
+  },
   created() {
     const url ='https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json';
     this.$http.get(url).then((response) => {
