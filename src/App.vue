@@ -53,20 +53,18 @@ export default {
   }),
   computed: {
     youbikes () {
-      this.ubikes.filter((bike) => {
-        bike.sarea === this.select.dist
-      });
-    }
+      return this.ubikes.filter((bike) => bike.sarea === this.select.dist);
+    },
   },
   watch: {
     youbikes() {
       this.addMarkers();
-    }
+    },
   },
   methods: {
     addMarkers() {
       this.youbikes.forEach((bike) => {
-        L.marker([50.5, 30.5]).addTo(map);
+        L.marker([bike.lat, bike.lng]).addTo(this.OSMap);
       });
     },
   },
