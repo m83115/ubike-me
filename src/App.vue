@@ -58,11 +58,17 @@ export default {
   },
   watch: {
     youbikes() {
-      this.addMarkers();
+      this.updateMap();
     },
   },
   methods: {
-    addMarkers() {
+    updateMap() {
+      // remove markers
+      this.OSMap.eachLayer((layer) => {
+        if (layer instanceof L.Marker)
+      })
+      // add markers
+
       this.youbikes.forEach((bike) => {
         L.marker([bike.lat, bike.lng]).addTo(this.OSMap);
       });
