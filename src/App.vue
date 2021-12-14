@@ -65,8 +65,10 @@ export default {
     updateMap() {
       // remove markers
       this.OSMap.eachLayer((layer) => {
-        if (layer instanceof L.Marker)
-      })
+        if (layer instanceof L.Marker) {
+          this.OSMap.removeLayer(layer);
+        }
+      });
       // add markers
 
       this.youbikes.forEach((bike) => {
